@@ -1,0 +1,40 @@
+# Python & Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Databases & Local Storage
+*.db
+*.sqlite3
+ai_discovery.db
+ai_discovery_test.db
+
+# Secrets & Environment Configurations
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Exports & Logs
+exports/
+*.csv
+logs/
+*.log
+
+# Streamlit Local Cache
+.streamlit/
+
+# OS Specific
+.DS_Store
+Thumbs.db
+desktop.ini
+script.md
