@@ -2,7 +2,7 @@
 
 import logging
 from typing import Dict, List, Any
-from botocore.exceptions import ClientError
+from botocore.exceptions import ClientError, EndpointConnectionError
 
 from src.discovery.base import BaseDiscoveryModule, ScanContext, DiscoveryResult
 from src.config import AICategory, AIUsageStatus, setup_logging
@@ -74,7 +74,7 @@ class ManagedAIDiscoveryModule(BaseDiscoveryModule):
                     ]
                 )
                 result.resources.append(res)
-        except ClientError as e:
+        except (ClientError, EndpointConnectionError) as e:
             result.api_calls_failed += 1
             result.warnings.append({"service": "comprehend", "error": str(e)})
 
@@ -112,7 +112,7 @@ class ManagedAIDiscoveryModule(BaseDiscoveryModule):
                     ]
                 )
                 result.resources.append(res)
-        except ClientError as e:
+        except (ClientError, EndpointConnectionError) as e:
             result.api_calls_failed += 1
             result.warnings.append({"service": "rekognition", "error": str(e)})
 
@@ -147,7 +147,7 @@ class ManagedAIDiscoveryModule(BaseDiscoveryModule):
                         ]
                     )
                     result.resources.append(res)
-        except ClientError as e:
+        except (ClientError, EndpointConnectionError) as e:
             result.api_calls_failed += 1
             result.warnings.append({"service": "textract", "error": str(e)})
 
@@ -182,7 +182,7 @@ class ManagedAIDiscoveryModule(BaseDiscoveryModule):
                     ]
                 )
                 result.resources.append(res)
-        except ClientError as e:
+        except (ClientError, EndpointConnectionError) as e:
             result.api_calls_failed += 1
             result.warnings.append({"service": "transcribe", "error": str(e)})
 
@@ -215,7 +215,7 @@ class ManagedAIDiscoveryModule(BaseDiscoveryModule):
                     ]
                 )
                 result.resources.append(res)
-        except ClientError as e:
+        except (ClientError, EndpointConnectionError) as e:
             result.api_calls_failed += 1
             result.warnings.append({"service": "polly", "error": str(e)})
 
@@ -251,7 +251,7 @@ class ManagedAIDiscoveryModule(BaseDiscoveryModule):
                     ]
                 )
                 result.resources.append(res)
-        except ClientError as e:
+        except (ClientError, EndpointConnectionError) as e:
             result.api_calls_failed += 1
             result.warnings.append({"service": "lex", "error": str(e)})
 
@@ -286,7 +286,7 @@ class ManagedAIDiscoveryModule(BaseDiscoveryModule):
                     ]
                 )
                 result.resources.append(res)
-        except ClientError as e:
+        except (ClientError, EndpointConnectionError) as e:
             result.api_calls_failed += 1
             result.warnings.append({"service": "translate", "error": str(e)})
 
@@ -323,7 +323,7 @@ class ManagedAIDiscoveryModule(BaseDiscoveryModule):
                     ]
                 )
                 result.resources.append(res)
-        except ClientError as e:
+        except (ClientError, EndpointConnectionError) as e:
             result.api_calls_failed += 1
             result.warnings.append({"service": "personalize", "error": str(e)})
 
@@ -360,7 +360,7 @@ class ManagedAIDiscoveryModule(BaseDiscoveryModule):
                     ]
                 )
                 result.resources.append(res)
-        except ClientError as e:
+        except (ClientError, EndpointConnectionError) as e:
             result.api_calls_failed += 1
             result.warnings.append({"service": "forecast", "error": str(e)})
 
@@ -397,6 +397,6 @@ class ManagedAIDiscoveryModule(BaseDiscoveryModule):
                     ]
                 )
                 result.resources.append(res)
-        except ClientError as e:
+        except (ClientError, EndpointConnectionError) as e:
             result.api_calls_failed += 1
             result.warnings.append({"service": "kendra", "error": str(e)})

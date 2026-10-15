@@ -39,8 +39,14 @@ class AWSSessionManager:
         """Create or return an active Boto3 Session."""
         if self._session is None:
             kwargs = {}
-            if self.settings.aws_profile:
+            if self.settings.aws_access_key_id and self.settings.aws_secret_access_key:
+                kwargs["aws_access_key_id"] = self.settings.aws_access_key_id
+                kwargs["aws_secret_access_key"] = self.settings.aws_secret_access_key
+                if self.settings.aws_session_token:
+                    kwargs["aws_session_token"] = self.settings.aws_session_token
+            elif self.settings.aws_profile:
                 kwargs["profile_name"] = self.settings.aws_profile
+
             if self.settings.aws_default_region:
                 kwargs["region_name"] = self.settings.aws_default_region
 

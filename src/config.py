@@ -80,6 +80,9 @@ class Settings(BaseSettings):
     )
 
     discovery_mode: ScanMode = Field(default=ScanMode.MOCK, alias="DISCOVERY_MODE")
+    aws_access_key_id: Optional[str] = Field(default=None, alias="AWS_ACCESS_KEY_ID")
+    aws_secret_access_key: Optional[str] = Field(default=None, alias="AWS_SECRET_ACCESS_KEY")
+    aws_session_token: Optional[str] = Field(default=None, alias="AWS_SESSION_TOKEN")
     aws_profile: Optional[str] = Field(default=None, alias="AWS_PROFILE")
     aws_default_region: str = Field(default="us-east-1", alias="AWS_DEFAULT_REGION")
     aws_role_arn: Optional[str] = Field(default=None, alias="AWS_ROLE_ARN")
